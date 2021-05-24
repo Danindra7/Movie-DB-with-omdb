@@ -4,13 +4,17 @@ import Modal from 'react-modal'
 import styled, { } from 'styled-components'
 import Button from './Button'
 import { Link } from 'react-router-dom'
+import MovieModal from './MovieModal'
 
 const MovieCardStyled = styled.div`
     display: flex;
     /* margin: 20px; */
     margin: 20px 10vw;
+    padding: 10px 0 30px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
     img{
         height: 50vh;
+        width: 17vw;
     }
     .card-body{
         min-width: 20vw;
@@ -22,36 +26,10 @@ const MovieCardStyled = styled.div`
         .btn-container{
             display: flex;
             justify-content: space-between;
-            
+            min-width: 20vw;
         }
     }
     
-`
-
-const ModalContainerStyled = styled.div`
-    display: flex;
-    img{
-        height: 30vh;
-    }
-    .card-body{
-        min-width: 20vw;
-        text-align: left;
-        margin-left: 20px;
-        p{
-            color: white;
-        }
-    }
-    .btn-container{
-        position: absolute;
-        top: 85%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .rating-container{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
 `
 
 const ModalStyle = {
@@ -115,26 +93,13 @@ function MovieCard(props) {
                 style={ModalStyle}
                 onRequestClose={() => setModalIsOpen(false)}
             >
-                <ModalContainerStyled>
-                    <img src={singleMovie.Poster} />
-                    <div className="card-body">
-                        <h3>{singleMovie.Title}</h3>
-                        <p>{singleMovie.Plot}</p>
-                        <div className="rating-container">
-                            <div>
-                                <h5>IMDB Rating</h5>
-                                <h4>{singleMovie.imdbRating}</h4>
-                            </div>
-                            <div>
-                                <h5>IMDB Votes</h5>
-                                <h4>{singleMovie.imdbVotes}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="btn-container">
-                        <Button onClick={() => setModalIsOpen(false)}>Close Modal</Button>
-                    </div>
-                </ModalContainerStyled>
+                <MovieModal
+                    Poster={singleMovie.Poster}
+                    Title={singleMovie.Title}
+                    Plot={singleMovie.Plot}
+                    imdbRating={singleMovie.imdbRating}
+                    imdbVotes={singleMovie.imdbVotes}
+                    onClick={() => setModalIsOpen(false)} />
             </Modal>
         </MovieCardStyled >
     )

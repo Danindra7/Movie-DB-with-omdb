@@ -9,6 +9,8 @@ const MovieListStyled = styled.div`
     padding-top: 2vh;
     min-height: 100vh;
     width: 100%;
+    padding-bottom: 5vh;
+    bottom: 0;
 `
 
 function MovieList() {

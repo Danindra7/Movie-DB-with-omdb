@@ -1,6 +1,7 @@
 # movie database with omdb API
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+package that used in this project (react-router-dom, react-modal, styled-components, axios)
 
 ## Component folder
 
@@ -15,7 +16,7 @@ contain Home page and Movie Detail Page that will be render in the app
 contain Movie list context so components can access movie search result easily
 without passing props to child
 
-## App
+## App.js
 
 The main application that will render home page and a detail information about a movie
 in movie detail page
