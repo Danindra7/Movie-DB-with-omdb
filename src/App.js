@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home.js'
+import MovieDetailPage from './pages/MovieDetail'
+import styled, { ThemeProvider } from 'styled-components'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+const theme = {
+  primary: 'white',
+  secondary: 'grey',
+  black: 'black'
+}
+
+const AppStyled = styled.div`
+  /* background-color: white; */
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-family: 'Heebo', sans-serif;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <AppStyled>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/movie-detail/:movieID' exact component={MovieDetailPage} />
+          </Switch>
+        </AppStyled>
+      </ThemeProvider>
+    </Router>
   );
 }
 
